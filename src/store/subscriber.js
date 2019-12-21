@@ -9,7 +9,7 @@ store.subscribe((mutation) => {
                 localStorage.setItem('token', mutation.payload)
             }else{
                 axios.defaults.headers.common['Authorization'] = null
-                localStorage.setItem('token')
+                localStorage.removeItem('token')
             }
 
             break;
