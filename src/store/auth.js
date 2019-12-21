@@ -33,8 +33,15 @@ export default {
         return dispatch('attempt', response.data.token)
     },
 
-    async attempt ({commit}, token){
-        commit('SET_TOKEN', token)
+    async attempt ({commit, state}, token){
+
+        if(token){
+          commit('SET_TOKEN', token)
+        }
+
+        if(!state.token){
+          return
+        }
 
         try{
           let response = await axios.get('auth/me')
