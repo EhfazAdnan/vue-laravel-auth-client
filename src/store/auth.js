@@ -37,11 +37,7 @@ export default {
         commit('SET_TOKEN', token)
 
         try{
-          let response = await axios.get('auth/me', {
-            headers: {
-              'Authorization': 'Bearer '+ token
-            }
-          })
+          let response = await axios.get('auth/me')
 
           commit('SET_USER', response.data)
         }catch(e){
